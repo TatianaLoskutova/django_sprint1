@@ -48,8 +48,9 @@ posts = [
 
 def index(request):
     template = 'blog/index.html'
+    reversed_posts = reversed(posts)
     context = {
-        'posts': posts
+        'posts': reversed_posts
     }
     return render(request, template, context)
 
@@ -57,14 +58,17 @@ def index(request):
 def post_detail(request, id: int):
     if id > len(posts):
         return HttpResponseNotFound(f'Несуществующий пост c id - {id}')
+    post = posts[id]
+    if not post:
+        raise ValueError('Пустой словарь')
     template = 'blog/detail.html'
     context = {
-        'post_detail': posts[id]
+        'post': post
     }
     return render(request, template, context)
 
 
-def category_posts(request, category_slug):
+def category_posts(request, category_slug: str):
     template = 'blog/category.html'
     context = {
         'category_slug': category_slug
