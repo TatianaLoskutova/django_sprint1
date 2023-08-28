@@ -56,7 +56,7 @@ ROOT_URLCONF = 'blogicum.urls'
 TEMPLATES_DIR = BASE_DIR / 'templates'
 STATICFILES_DIRS = [
     BASE_DIR / 'static_dev',
-] 
+]
 
 TEMPLATES = [
     {
