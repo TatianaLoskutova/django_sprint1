@@ -55,8 +55,9 @@ def index(request):
 
 
 def post_detail(request, id: int):
-    post = posts[id]
-    if not post:
+    try:
+        post = posts[id]
+    except IndexError:
         return HttpResponseNotFound('Пустой словарь')
     template = 'blog/detail.html'
     context = {

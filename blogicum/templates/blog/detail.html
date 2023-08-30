@@ -13,7 +13,7 @@
         <a href="{% url 'blog:post_detail' id=post.id %}">{{ post.category }}</a>
       </li>
     </ul>
-    <p>{{ post.text|safe }}</p>
+    <p>{{ post.text|linebreaksbr }}</p>
   </article>
 </div>
 {% endblock %}
